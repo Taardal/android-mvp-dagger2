@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MvpDaggerExample</string>
+    <string name="title_activity_team">TeamActivity</string>
+    <string name="title_activity_player">PlayerActivity</string>
+    <string name="team">Team</string>
+    <string name="player">Player</string>
+</resources>
