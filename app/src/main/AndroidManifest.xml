@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="no.taardal.mvpdaggerexample">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".MvpDaggerExampleApplication"
         android:allowBackup="true"
@@ -18,11 +20,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.TeamActivity"
-            android:label="@string/title_activity_team" />
-        <activity
-            android:name=".activity.PlayerActivity"
-            android:label="@string/title_activity_player" />
+            android:name=".activity.UpcomingActivity"
+            android:label="@string/title_activity_movie" />
+        <activity android:name=".activity.SearchActivity"></activity>
     </application>
 
 </manifest>

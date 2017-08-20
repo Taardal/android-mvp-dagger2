@@ -6,10 +6,10 @@ import android.app.Application;
 import javax.inject.Inject;
 
 import dagger.android.DispatchingAndroidInjector;
-import dagger.android.HasDispatchingActivityInjector;
+import dagger.android.HasActivityInjector;
 import no.taardal.mvpdaggerexample.component.DaggerAppComponent;
 
-public class MvpDaggerExampleApplication extends Application implements HasDispatchingActivityInjector {
+public class MvpDaggerExampleApplication extends Application implements HasActivityInjector {
 
     @Inject
     public DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;

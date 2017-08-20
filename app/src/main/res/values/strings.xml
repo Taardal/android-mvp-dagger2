@@ -2,6 +2,7 @@
     <string name="app_name">MvpDaggerExample</string>
     <string name="title_activity_team">TeamActivity</string>
     <string name="title_activity_player">PlayerActivity</string>
-    <string name="team">Team</string>
-    <string name="player">Player</string>
+    <string name="title_activity_movie">MovieActivity</string>
+    <string name="main_upcoming_movies_capitalized">Upcoming Movies</string>
+    <string name="main_search_capitalized">Search</string>
 </resources>

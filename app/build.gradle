@@ -4,10 +4,12 @@ def android_support_version = "25.3.1"
 def android_support_constraint_version = "1.0.2"
 def espresso_version = "2.2.2"
 def junit_version = "4.12"
-def dagger_version = "2.10"
+def dagger_version = "2.11"
 def butter_knife_version = "8.8.1"
 def google_find_bugs_version = "3.0.1"
 def mockito_version = "2.8.47"
+def gson_version = "2.8.1"
+def volley_version = "1.0.0"
 
 android {
     compileSdkVersion 25
@@ -53,4 +55,8 @@ dependencies {
 
     compile "com.jakewharton:butterknife:$butter_knife_version"
     annotationProcessor "com.jakewharton:butterknife-compiler:$butter_knife_version"
+
+    compile "com.google.code.gson:gson:$gson_version"
+    compile "com.android.volley:volley:$volley_version"
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }

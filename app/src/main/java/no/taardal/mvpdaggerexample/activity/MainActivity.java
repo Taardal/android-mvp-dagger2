@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -12,37 +13,50 @@ import no.taardal.mvpdaggerexample.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.button_main_team)
-    Button teamButton;
+    public static final String QUERY_EXTRA = MainActivity.class.getName() + ".QUERY";
 
-    @BindView(R.id.button_main_player)
-    Button playerButton;
+    private static final String TAG = MainActivity.class.getName();
+
+    @BindView(R.id.button_main_upcoming_movies)
+    Button upcomingMoviesButton;
+
+    @BindView(R.id.button_main_search)
+    Button searchButton;
+
+    @BindView(R.id.edit_text_main_search)
+    EditText searchEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        teamButton.setOnClickListener(new View.OnClickListener() {
+        upcomingMoviesButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                startActivity(TeamActivity.class);
+                startUpcomingActivity();
             }
 
         });
-        playerButton.setOnClickListener(new View.OnClickListener() {
+        searchButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                startActivity(PlayerActivity.class);
+                startSearchActivity();
             }
 
         });
     }
 
-    private void startActivity(Class<? extends AppCompatActivity> activity) {
-        startActivity(new Intent(this, activity));
+    private void startUpcomingActivity() {
+        startActivity(new Intent(this, UpcomingActivity.class));
+    }
+
+    private void startSearchActivity() {
+        Intent intent = new Intent(this, SearchActivity.class);
+        intent.putExtra(QUERY_EXTRA, searchEditText.getText().toString());
+        startActivity(intent);
     }
 
 }

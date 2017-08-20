@@ -1,19 +1,16 @@
 package no.taardal.mvpdaggerexample.component;
 
-import javax.inject.Singleton;
-
 import dagger.BindsInstance;
 import dagger.Component;
 import dagger.android.support.AndroidSupportInjectionModule;
 import no.taardal.mvpdaggerexample.MvpDaggerExampleApplication;
+import no.taardal.mvpdaggerexample.module.AndroidInjectorModule;
 import no.taardal.mvpdaggerexample.module.AppModule;
-import no.taardal.mvpdaggerexample.module.InjectorFactoryModule;
 
-@Singleton
 @Component(modules = {
         AndroidSupportInjectionModule.class,
-        AppModule.class,
-        InjectorFactoryModule.class
+        AndroidInjectorModule.class,
+        AppModule.class
 })
 public interface AppComponent {
 
