@@ -2,15 +2,19 @@ package no.taardal.mvpdaggerexample.activity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import dagger.android.AndroidInjection;
 import no.taardal.mvpdaggerexample.R;
+import no.taardal.mvpdaggerexample.adapter.MoviesAdapter;
 import no.taardal.mvpdaggerexample.movie.Movie;
 import no.taardal.mvpdaggerexample.mvppresenter.SearchPresenter;
 import no.taardal.mvpdaggerexample.mvpview.MoviesView;
@@ -21,17 +25,34 @@ public class SearchActivity extends AppCompatActivity implements MoviesView {
 
     private static final String TAG = SearchActivity.class.getName();
 
-    private String query = "";
-
     @Inject
     SearchPresenter searchPresenter;
+
+    @BindView(R.id.recycler_view_search_movies_results)
+    RecyclerView searchResultsRecyclerView;
+
+    private String query;
+    private MoviesAdapter moviesAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
-        query = getIntent().getExtras().getString(MainActivity.QUERY_EXTRA);
+        ButterKnife.bind(this);
+        query = getQuery();
+        moviesAdapter = new MoviesAdapter();
+        searchResultsRecyclerView.setAdapter(moviesAdapter);
+        searchResultsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    private String getQuery() {
+        String query = getIntent().getExtras().getString(MainActivity.QUERY_EXTRA);
+        if (query != null) {
+            return query;
+        } else {
+            return "";
+        }
     }
 
     @Override
@@ -41,11 +62,13 @@ public class SearchActivity extends AppCompatActivity implements MoviesView {
     }
 
     @Override
-    public void onSetMovies(List<Movie> movies) {
-        for (Movie movie : movies) {
-            Log.i(TAG, movie.toString());
-        }
-        Toast.makeText(getApplicationContext(), "Got [" + movies.size() + "] movies.", Toast.LENGTH_LONG).show();
+    public void setMovies(List<Movie> movies) {
+        moviesAdapter.setMovies(movies);
+    }
+
+    @Override
+    public void showErrorMessage() {
+        Toast.makeText(getApplicationContext(), "Something went wrong.", Toast.LENGTH_SHORT).show();
     }
 
 }

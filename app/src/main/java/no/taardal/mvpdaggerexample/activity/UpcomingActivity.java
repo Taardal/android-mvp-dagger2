@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -42,14 +43,19 @@ public class UpcomingActivity extends AppCompatActivity implements MoviesView {
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
+    protected void onPostResume() {
+        super.onPostResume();
         upcomingPresenter.onViewReady();
     }
 
     @Override
-    public void onSetMovies(List<Movie> movies) {
+    public void setMovies(List<Movie> movies) {
         moviesAdapter.setMovies(movies);
+    }
+
+    @Override
+    public void showErrorMessage() {
+        Toast.makeText(getApplicationContext(), "Something went wrong.", Toast.LENGTH_SHORT).show();
     }
 
 }

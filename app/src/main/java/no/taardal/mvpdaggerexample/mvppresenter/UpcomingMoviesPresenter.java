@@ -6,30 +6,33 @@ import javax.inject.Inject;
 
 import no.taardal.mvpdaggerexample.listener.MovieListener;
 import no.taardal.mvpdaggerexample.movie.Movie;
-import no.taardal.mvpdaggerexample.mvpmodel.MovieModel;
+import no.taardal.mvpdaggerexample.mvpmodel.UpcomingModel;
 import no.taardal.mvpdaggerexample.mvpview.MoviesView;
-import no.taardal.mvpdaggerexample.qualifier.TMDb;
-import no.taardal.mvpdaggerexample.qualifier.UpcomingView;
 
 public class UpcomingMoviesPresenter implements UpcomingPresenter, MovieListener {
 
-    private MoviesView upcomingView;
-    private MovieModel movieModel;
+    private MoviesView moviesView;
+    private UpcomingModel upcomingModel;
 
     @Inject
-    public UpcomingMoviesPresenter(@UpcomingView MoviesView upcomingView, @TMDb MovieModel movieModel) {
-        this.upcomingView = upcomingView;
-        this.movieModel = movieModel;
+    public UpcomingMoviesPresenter(MoviesView moviesView, UpcomingModel upcomingModel) {
+        this.moviesView = moviesView;
+        this.upcomingModel = upcomingModel;
     }
 
     @Override
     public void onViewReady() {
-        movieModel.getMovies(this);
+        upcomingModel.getUpcomingMovies(this);
     }
 
     @Override
-    public void onReceivedMovies(List<Movie> movies) {
-        upcomingView.onSetMovies(movies);
+    public void onSuccess(List<Movie> movies) {
+        moviesView.setMovies(movies);
+    }
+
+    @Override
+    public void onFailure() {
+        moviesView.showErrorMessage();
     }
 
 }

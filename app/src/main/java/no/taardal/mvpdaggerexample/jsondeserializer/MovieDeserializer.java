@@ -9,12 +9,31 @@ import java.lang.reflect.Type;
 
 import no.taardal.mvpdaggerexample.movie.Movie;
 
-public class TheMovieDatabaseMovieDeserializer extends Deserializer implements JsonDeserializer<Movie> {
+public class MovieDeserializer extends Deserializer implements JsonDeserializer<Movie> {
 
     @Override
     public Movie deserialize(JsonElement jsonElement, Type type, JsonDeserializationContext jsonDeserializationContext) {
-        Movie movie = new Movie();
         JsonObject jsonObject = jsonElement.getAsJsonObject();
+        if (isOpenMovieDatabaseJsonObject(jsonObject)) {
+            return getOpenMovieDatabaseMovie(jsonObject);
+        } else {
+            return getTheMovieDatabaseMovie(jsonObject);
+        }
+    }
+
+    private boolean isOpenMovieDatabaseJsonObject(JsonObject jsonObject) {
+        return jsonObject.get("Title") != null;
+    }
+
+    private Movie getOpenMovieDatabaseMovie(JsonObject jsonObject) {
+        Movie movie = new Movie();
+        movie.setTitle(getString(jsonObject.get("Title")));
+        movie.setImdbId(getString(jsonObject.get("imdbID")));
+        return movie;
+    }
+
+    private Movie getTheMovieDatabaseMovie(JsonObject jsonObject) {
+        Movie movie = new Movie();
         movie.setTitle(getString(jsonObject.get("title")));
         movie.setImdbId(getString(jsonObject.get("imdbId")));
         movie.setTagline(getString(jsonObject.get("tagline")));
@@ -22,8 +41,6 @@ public class TheMovieDatabaseMovieDeserializer extends Deserializer implements J
         movie.setLanguage(getString(jsonObject.get("language")));
         movie.setEdition(getString(jsonObject.get("edition")));
         movie.setRuntime(getInt(jsonObject.get("runtime")));
-        movie.setPosterPath(getString(jsonObject.get("posterPath")));
-        movie.setBackdropPath(getString(jsonObject.get("backdropPath")));
         return movie;
     }
 

@@ -11,14 +11,16 @@ public abstract class AndroidInjectorModule {
     @ContributesAndroidInjector(modules = {
             ViewModule.class,
             PresenterModule.class,
-            ModelModule.class
+            ModelModule.class,
+            ApiModule.class
     })
     abstract UpcomingActivity contributeUpcomingActivityInjector();
 
     @ContributesAndroidInjector(modules = {
             ViewModule.class,
             PresenterModule.class,
-            ModelModule.class
+            ModelModule.class,
+            ApiModule.class
     })
     abstract SearchActivity contributeSearchActivityInjector();
 

@@ -1,12 +1,12 @@
 package no.taardal.mvpdaggerexample.module;
 
-import android.content.Context;
-
 import dagger.Module;
 import dagger.Provides;
-import no.taardal.mvpdaggerexample.mvpmodel.MovieModel;
-import no.taardal.mvpdaggerexample.mvpmodel.OpenMovieDatabaseModel;
-import no.taardal.mvpdaggerexample.mvpmodel.TheMovieDatabaseModel;
+import no.taardal.mvpdaggerexample.api.MovieApi;
+import no.taardal.mvpdaggerexample.mvpmodel.SearchModel;
+import no.taardal.mvpdaggerexample.mvpmodel.SearchMoviesModel;
+import no.taardal.mvpdaggerexample.mvpmodel.UpcomingModel;
+import no.taardal.mvpdaggerexample.mvpmodel.UpcomingMoviesModel;
 import no.taardal.mvpdaggerexample.qualifier.OMDb;
 import no.taardal.mvpdaggerexample.qualifier.TMDb;
 
@@ -14,15 +14,13 @@ import no.taardal.mvpdaggerexample.qualifier.TMDb;
 public class ModelModule {
 
     @Provides
-    @TMDb
-    MovieModel provideTheMovieDatabaseModel(Context context) {
-        return new TheMovieDatabaseModel(context);
+    UpcomingModel provideUpcomingModel(@TMDb MovieApi movieApi) {
+        return new UpcomingMoviesModel(movieApi);
     }
 
     @Provides
-    @OMDb
-    MovieModel provideOpenMovieDatabaseModel(Context context) {
-        return new OpenMovieDatabaseModel(context);
+    SearchModel provideSearchModel(@OMDb MovieApi movieApi) {
+        return new SearchMoviesModel(movieApi);
     }
 
 }

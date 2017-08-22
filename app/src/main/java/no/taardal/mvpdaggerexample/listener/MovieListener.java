@@ -6,6 +6,8 @@ import no.taardal.mvpdaggerexample.movie.Movie;
 
 public interface MovieListener {
 
-    void onReceivedMovies(List<Movie> movies);
+    void onSuccess(List<Movie> movies);
+
+    void onFailure();
 
 }

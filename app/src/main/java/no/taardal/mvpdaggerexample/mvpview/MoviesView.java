@@ -6,6 +6,7 @@ import no.taardal.mvpdaggerexample.movie.Movie;
 
 public interface MoviesView {
 
-    void onSetMovies(List<Movie> movies);
+    void setMovies(List<Movie> movies);
 
+    void showErrorMessage();
 }
