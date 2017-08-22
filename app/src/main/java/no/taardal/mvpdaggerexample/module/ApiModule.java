@@ -5,6 +5,8 @@ import android.content.Context;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import no.taardal.mvpdaggerexample.api.MovieApi;
@@ -15,8 +17,6 @@ import no.taardal.mvpdaggerexample.qualifier.TMDb;
 
 @Module
 public class ApiModule {
-
-    private RequestQueue requestQueue;
 
     @Provides
     @TMDb
@@ -31,11 +31,9 @@ public class ApiModule {
     }
 
     @Provides
+    @Singleton
     RequestQueue provideRequestQueue(Context context) {
-        if (requestQueue == null) {
-            requestQueue = Volley.newRequestQueue(context);
-        }
-        return requestQueue;
+        return Volley.newRequestQueue(context);
     }
 
 }
