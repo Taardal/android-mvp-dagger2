@@ -9,8 +9,6 @@ public class Movie {
     private String language;
     private String edition;
     private int runtime;
-    private String posterPath;
-    private String backdropPath;
 
     @Override
     public String toString() {
@@ -22,8 +20,6 @@ public class Movie {
                 ", language='" + language + '\'' +
                 ", edition='" + edition + '\'' +
                 ", runtime=" + runtime +
-                ", posterPath='" + posterPath + '\'' +
-                ", backdropPath='" + backdropPath + '\'' +
                 '}';
     }
 
@@ -35,9 +31,7 @@ public class Movie {
                     && (imdbId == null && movie.getImdbId() == null) || imdbId.equals(movie.getImdbId())
                     && (tagline == null && movie.getTagline() == null) || tagline.equals(movie.getTagline())
                     && (overview == null && movie.getOverview() == null) || overview.equals(movie.getOverview())
-                    && runtime == movie.getRuntime()
-                    && (posterPath == null && movie.getPosterPath() == null) || posterPath.equals(movie.getPosterPath())
-                    && (backdropPath == null && movie.getBackdropPath() == null) || backdropPath.equals(movie.getBackdropPath());
+                    && runtime == movie.getRuntime();
         } else {
             return false;
         }
@@ -99,19 +93,4 @@ public class Movie {
         this.runtime = runtime;
     }
 
-    public String getPosterPath() {
-        return posterPath;
-    }
-
-    public void setPosterPath(String posterPath) {
-        this.posterPath = posterPath;
-    }
-
-    public String getBackdropPath() {
-        return backdropPath;
-    }
-
-    public void setBackdropPath(String backdropPath) {
-        this.backdropPath = backdropPath;
-    }
 }
