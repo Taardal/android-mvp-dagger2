@@ -49,6 +49,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        if (!searchEditText.getText().toString().isEmpty()) {
+            searchEditText.setText("");
+        }
+    }
+
     private void startUpcomingActivity() {
         startActivity(new Intent(this, UpcomingActivity.class));
     }

@@ -34,7 +34,11 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieItemV
 
     @Override
     public void onBindViewHolder(MovieItemViewHolder movieItemViewHolder, int position) {
-        movieItemViewHolder.movieTitleTextView.setText(movies.get(position).getTitle());
+        Movie movie = movies.get(position);
+        movieItemViewHolder.titleTextView.setText(movie.getTitle());
+        if (movie.getReleaseDate() != null) {
+            movieItemViewHolder.releaseDateTextView.setText(movie.getReleaseDate());
+        }
     }
 
     @Override
@@ -53,7 +57,10 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieItemV
     class MovieItemViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.text_view_movie_item_title)
-        TextView movieTitleTextView;
+        TextView titleTextView;
+
+        @BindView(R.id.text_view_movie_item_release_date)
+        TextView releaseDateTextView;
 
         MovieItemViewHolder(View itemView) {
             super(itemView);

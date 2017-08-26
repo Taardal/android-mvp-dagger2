@@ -7,35 +7,8 @@ public class Movie {
     private String tagline;
     private String overview;
     private String language;
-    private String edition;
+    private String releaseDate;
     private int runtime;
-
-    @Override
-    public String toString() {
-        return "Movie{" +
-                "title='" + title + '\'' +
-                ", imdbId='" + imdbId + '\'' +
-                ", tagline='" + tagline + '\'' +
-                ", overview='" + overview + '\'' +
-                ", language='" + language + '\'' +
-                ", edition='" + edition + '\'' +
-                ", runtime=" + runtime +
-                '}';
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        if (object != null && getClass() == object.getClass()) {
-            Movie movie = (Movie) object;
-            return (title == null && movie.getTitle() == null) || title.equals(movie.getTitle())
-                    && (imdbId == null && movie.getImdbId() == null) || imdbId.equals(movie.getImdbId())
-                    && (tagline == null && movie.getTagline() == null) || tagline.equals(movie.getTagline())
-                    && (overview == null && movie.getOverview() == null) || overview.equals(movie.getOverview())
-                    && runtime == movie.getRuntime();
-        } else {
-            return false;
-        }
-    }
 
     public String getTitle() {
         return title;
@@ -77,12 +50,12 @@ public class Movie {
         this.language = language;
     }
 
-    public String getEdition() {
-        return edition;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setEdition(String edition) {
-        this.edition = edition;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public int getRuntime() {
@@ -91,6 +64,19 @@ public class Movie {
 
     public void setRuntime(int runtime) {
         this.runtime = runtime;
+    }
+
+    @Override
+    public String toString() {
+        return "Movie{" +
+                "title='" + title + '\'' +
+                ", imdbId='" + imdbId + '\'' +
+                ", tagline='" + tagline + '\'' +
+                ", overview='" + overview + '\'' +
+                ", language='" + language + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", runtime=" + runtime +
+                '}';
     }
 
 }

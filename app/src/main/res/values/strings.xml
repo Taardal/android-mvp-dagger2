@@ -4,4 +4,5 @@
     <string name="main_search_for_movies_by_title">Search for movies</string>
     <string name="main_check_out_upcoming_movies">Check out upcoming movies</string>
     <string name="main_movie_roll_image_content_description">Movie roll image</string>
+    <string name="movie_item_icon_content_description">Movie item icon</string>
 </resources>

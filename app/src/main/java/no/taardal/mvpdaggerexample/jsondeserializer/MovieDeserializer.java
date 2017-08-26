@@ -38,8 +38,8 @@ public class MovieDeserializer extends Deserializer implements JsonDeserializer<
         movie.setImdbId(getString(jsonObject.get("imdbId")));
         movie.setTagline(getString(jsonObject.get("tagline")));
         movie.setOverview(getString(jsonObject.get("overview")));
-        movie.setLanguage(getString(jsonObject.get("language")));
-        movie.setEdition(getString(jsonObject.get("edition")));
+        movie.setLanguage(getString(jsonObject.get("original_language")));
+        movie.setReleaseDate(getString(jsonObject.get("release_date")));
         movie.setRuntime(getInt(jsonObject.get("runtime")));
         return movie;
     }
