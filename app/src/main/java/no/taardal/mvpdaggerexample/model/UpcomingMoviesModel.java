@@ -1,4 +1,4 @@
-package no.taardal.mvpdaggerexample.mvpmodel;
+package no.taardal.mvpdaggerexample.model;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -9,31 +9,31 @@ import javax.inject.Inject;
 
 import no.taardal.mvpdaggerexample.api.MovieApi;
 import no.taardal.mvpdaggerexample.movie.Movie;
-import no.taardal.mvpdaggerexample.mvppresenter.SearchPresenter;
+import no.taardal.mvpdaggerexample.presenter.UpcomingPresenter;
 
-public class SearchMoviesModel implements SearchModel {
+public class UpcomingMoviesModel implements UpcomingModel {
 
     private MovieApi movieApi;
 
     @Inject
-    public SearchMoviesModel(MovieApi movieApi) {
+    public UpcomingMoviesModel(MovieApi movieApi) {
         this.movieApi = movieApi;
     }
 
     @Override
-    public void search(String query, final SearchPresenter searchPresenter) {
-        movieApi.search(query, new Response.Listener<Movie[]>() {
+    public void getUpcomingMovies(final UpcomingPresenter upcomingPresenter) {
+        movieApi.requestUpcomingMovies(new Response.Listener<Movie[]>() {
 
             @Override
             public void onResponse(Movie[] response) {
-                searchPresenter.onSearchResult(Arrays.asList(response));
+                upcomingPresenter.onUpcomingMovies(Arrays.asList(response));
             }
 
         }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                searchPresenter.onError();
+                upcomingPresenter.onError();
             }
 
         });

@@ -1,4 +1,4 @@
-package no.taardal.mvpdaggerexample.mvppresenter;
+package no.taardal.mvpdaggerexample.presenter;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ public interface UpcomingPresenter {
 
     void onViewReady();
 
-    void onUpcomingMoviesResult(List<Movie> movies);
+    void onUpcomingMovies(List<Movie> movies);
 
     void onError();
 

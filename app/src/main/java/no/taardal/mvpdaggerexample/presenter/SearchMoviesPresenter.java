@@ -1,12 +1,12 @@
-package no.taardal.mvpdaggerexample.mvppresenter;
+package no.taardal.mvpdaggerexample.presenter;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
 import no.taardal.mvpdaggerexample.movie.Movie;
-import no.taardal.mvpdaggerexample.mvpmodel.SearchModel;
-import no.taardal.mvpdaggerexample.mvpview.MoviesView;
+import no.taardal.mvpdaggerexample.model.SearchModel;
+import no.taardal.mvpdaggerexample.view.MoviesView;
 
 public class SearchMoviesPresenter implements SearchPresenter {
 

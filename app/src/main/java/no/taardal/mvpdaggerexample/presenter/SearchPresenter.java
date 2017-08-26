@@ -1,4 +1,4 @@
-package no.taardal.mvpdaggerexample.mvppresenter;
+package no.taardal.mvpdaggerexample.presenter;
 
 import java.util.List;
 

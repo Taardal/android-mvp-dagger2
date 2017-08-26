@@ -22,13 +22,13 @@ public class TheMovieDatabaseApi implements MovieApi {
     }
 
     @Override
-    public void getUpcomingMovies(Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
+    public void requestUpcomingMovies(Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
         String url = BASE_URL + "/movie/upcoming?api_key=" + API_KEY;
         requestQueue.add(new MoviesRequest(url, responseListener, errorListener));
     }
 
     @Override
-    public void search(String query, Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
+    public void requestSearch(String query, Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
         String url = BASE_URL + "/movie/search?api_key=" + API_KEY + "&query=" + query;
         requestQueue.add(new MoviesRequest(url, responseListener, errorListener));
     }

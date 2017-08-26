@@ -1,4 +1,4 @@
-package no.taardal.mvpdaggerexample.mvpview;
+package no.taardal.mvpdaggerexample.view;
 
 import java.util.List;
 

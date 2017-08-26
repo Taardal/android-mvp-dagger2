@@ -1,7 +1,5 @@
 package no.taardal.mvpdaggerexample.jsondeserializer;
 
-import android.util.Log;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -23,7 +21,6 @@ public class MoviesDeserializer extends Deserializer implements JsonDeserializer
         for (int i = 0; i < jsonArray.size(); i++) {
             movies[i] = jsonDeserializationContext.deserialize(jsonArray.get(i), Movie.class);
         }
-        Log.i(TAG, "Deserialized [" + movies.length + "] movies.");
         return movies;
     }
 

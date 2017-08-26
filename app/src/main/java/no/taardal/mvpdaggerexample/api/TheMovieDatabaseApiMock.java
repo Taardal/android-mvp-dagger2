@@ -16,12 +16,12 @@ public class TheMovieDatabaseApiMock implements MovieApi {
     }
 
     @Override
-    public void getUpcomingMovies(Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
+    public void requestUpcomingMovies(Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
         responseListener.onResponse(movies);
     }
 
     @Override
-    public void search(String query, Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
+    public void requestSearch(String query, Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
         responseListener.onResponse(movies);
     }
 

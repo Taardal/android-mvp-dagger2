@@ -22,12 +22,12 @@ public class OpenMovieDatabaseApi implements MovieApi {
     }
 
     @Override
-    public void getUpcomingMovies(Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
+    public void requestUpcomingMovies(Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
 
     }
 
     @Override
-    public void search(String query, Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
+    public void requestSearch(String query, Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
         String url = BASE_URL + "?apikey=" + API_KEY + "&s=" + query;
         requestQueue.add(new MoviesRequest(url, responseListener, errorListener));
     }

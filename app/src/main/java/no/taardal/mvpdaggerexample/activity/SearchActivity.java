@@ -16,8 +16,8 @@ import dagger.android.AndroidInjection;
 import no.taardal.mvpdaggerexample.R;
 import no.taardal.mvpdaggerexample.adapter.MoviesAdapter;
 import no.taardal.mvpdaggerexample.movie.Movie;
-import no.taardal.mvpdaggerexample.mvppresenter.SearchPresenter;
-import no.taardal.mvpdaggerexample.mvpview.MoviesView;
+import no.taardal.mvpdaggerexample.presenter.SearchPresenter;
+import no.taardal.mvpdaggerexample.view.MoviesView;
 import no.taardal.mvpdaggerexample.qualifier.SearchView;
 
 @SearchView

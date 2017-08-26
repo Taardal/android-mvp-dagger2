@@ -4,7 +4,7 @@ import dagger.Binds;
 import dagger.Module;
 import no.taardal.mvpdaggerexample.activity.SearchActivity;
 import no.taardal.mvpdaggerexample.activity.UpcomingActivity;
-import no.taardal.mvpdaggerexample.mvpview.MoviesView;
+import no.taardal.mvpdaggerexample.view.MoviesView;
 import no.taardal.mvpdaggerexample.qualifier.SearchView;
 import no.taardal.mvpdaggerexample.qualifier.UpcomingView;
 
