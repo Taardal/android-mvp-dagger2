@@ -19,10 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activity.UpcomingActivity"
-            android:label="@string/title_activity_movie" />
-        <activity android:name=".activity.SearchActivity"></activity>
+        <activity android:name=".activity.UpcomingActivity" />
+        <activity android:name=".activity.SearchActivity" />
     </application>
 
 </manifest>

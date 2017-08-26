@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">MvpDaggerExample</string>
-    <string name="title_activity_team">TeamActivity</string>
-    <string name="title_activity_player">PlayerActivity</string>
-    <string name="title_activity_movie">MovieActivity</string>
-    <string name="main_upcoming_movies_capitalized">Upcoming Movies</string>
-    <string name="main_search_capitalized">Search</string>
+    <string name="main_movie_title_ellipsis">Enter the title of your favorite movie…</string>
+    <string name="main_search_for_movies_by_title">Search for movies</string>
+    <string name="main_check_out_upcoming_movies">Check out upcoming movies</string>
+    <string name="main_movie_roll_image_content_description">Movie roll image</string>
 </resources>

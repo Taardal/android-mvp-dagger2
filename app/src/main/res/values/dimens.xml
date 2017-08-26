@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_main_headers">50sp</dimen>
+    <dimen name="padding_main_sides">20dp</dimen>
+    <dimen name="height_main_movie_roll_icon">200dp</dimen>
+    <dimen name="margin_main_movie_roll_icon">50dp</dimen>
+</resources>
