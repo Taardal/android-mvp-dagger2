@@ -1,10 +1,13 @@
 package no.taardal.mvpdaggerexample.api;
 
-import no.taardal.mvpdaggerexample.listener.MovieListener;
+import com.android.volley.Response;
+
+import no.taardal.mvpdaggerexample.movie.Movie;
 
 public interface MovieApi {
 
-    void getUpcomingMovies(MovieListener movieListener);
-    void search(String query, MovieListener movieListener);
+    void getUpcomingMovies(Response.Listener<Movie[]> movieListener, Response.ErrorListener errorListener);
+
+    void search(String query, Response.Listener<Movie[]> movieListener, Response.ErrorListener errorListener);
 
 }

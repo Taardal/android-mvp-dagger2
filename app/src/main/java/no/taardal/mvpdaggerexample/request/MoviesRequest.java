@@ -15,21 +15,18 @@ import java.io.UnsupportedEncodingException;
 
 import no.taardal.mvpdaggerexample.jsondeserializer.MovieDeserializer;
 import no.taardal.mvpdaggerexample.jsondeserializer.MoviesDeserializer;
-import no.taardal.mvpdaggerexample.listener.MovieListener;
-import no.taardal.mvpdaggerexample.listener.MovieResponseErrorListener;
-import no.taardal.mvpdaggerexample.listener.MovieResponseListener;
 import no.taardal.mvpdaggerexample.movie.Movie;
 
-public class MovieRequest extends Request<Movie[]> {
+public class MoviesRequest extends Request<Movie[]> {
 
-    private static final String TAG = MovieRequest.class.getName();
+    private static final String TAG = MoviesRequest.class.getName();
 
-    private Gson gson;
     private Response.Listener<Movie[]> responseListener;
+    private Gson gson;
 
-    public MovieRequest(String url, MovieListener movieListener) {
-        super(Method.GET, url, new MovieResponseErrorListener(movieListener));
-        this.responseListener = new MovieResponseListener(movieListener);
+    public MoviesRequest(String url, Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
+        super(Method.GET, url, errorListener);
+        this.responseListener = responseListener;
         gson = new GsonBuilder()
                 .registerTypeAdapter(Movie[].class, new MoviesDeserializer())
                 .registerTypeAdapter(Movie.class, new MovieDeserializer())

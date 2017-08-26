@@ -4,19 +4,18 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import no.taardal.mvpdaggerexample.listener.MovieListener;
 import no.taardal.mvpdaggerexample.movie.Movie;
 import no.taardal.mvpdaggerexample.mvpmodel.SearchModel;
 import no.taardal.mvpdaggerexample.mvpview.MoviesView;
 
-public class SearchMoviesPresenter implements SearchPresenter, MovieListener {
+public class SearchMoviesPresenter implements SearchPresenter {
 
-    private MoviesView searchView;
+    private MoviesView moviesView;
     private SearchModel searchModel;
 
     @Inject
     public SearchMoviesPresenter(MoviesView moviesView, SearchModel searchModel) {
-        this.searchView = moviesView;
+        this.moviesView = moviesView;
         this.searchModel = searchModel;
     }
 
@@ -26,13 +25,13 @@ public class SearchMoviesPresenter implements SearchPresenter, MovieListener {
     }
 
     @Override
-    public void onSuccess(List<Movie> movies) {
-        searchView.setMovies(movies);
+    public void onSearchResult(List<Movie> movies) {
+        moviesView.setMovies(movies);
     }
 
     @Override
-    public void onFailure() {
-        searchView.showErrorMessage();
+    public void onError() {
+        moviesView.showErrorMessage();
     }
 
 }

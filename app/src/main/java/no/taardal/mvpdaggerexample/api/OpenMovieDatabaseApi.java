@@ -1,21 +1,18 @@
 package no.taardal.mvpdaggerexample.api;
 
-import android.util.Log;
-
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
 
 import javax.inject.Inject;
 
-import no.taardal.mvpdaggerexample.listener.MovieListener;
-import no.taardal.mvpdaggerexample.mvpmodel.SearchMoviesModel;
-import no.taardal.mvpdaggerexample.request.MovieRequest;
+import no.taardal.mvpdaggerexample.movie.Movie;
+import no.taardal.mvpdaggerexample.request.MoviesRequest;
 
 public class OpenMovieDatabaseApi implements MovieApi {
 
-    private static final String TAG = SearchMoviesModel.class.getName();
-    private static final String API_KEY = "b986ada8";
-    private static final String API_URL = "http://www.omdbapi.com";
+    private static final String BASE_URL = "http://www.omdbapi.com";
     private static final String IMAGE_URL = "http://img.omdbapi.com";
+    private static final String API_KEY = "b986ada8";
 
     private RequestQueue requestQueue;
 
@@ -25,15 +22,14 @@ public class OpenMovieDatabaseApi implements MovieApi {
     }
 
     @Override
-    public void getUpcomingMovies(MovieListener movieListener) {
-        movieListener.onFailure();
+    public void getUpcomingMovies(Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
+
     }
 
     @Override
-    public void search(String query, MovieListener movieListener) {
-        String url = API_URL + "?apikey=" + API_KEY + "&s=" + query;
-        Log.i(TAG, url);
-        requestQueue.add(new MovieRequest(url, movieListener));
+    public void search(String query, Response.Listener<Movie[]> responseListener, Response.ErrorListener errorListener) {
+        String url = BASE_URL + "?apikey=" + API_KEY + "&s=" + query;
+        requestQueue.add(new MoviesRequest(url, responseListener, errorListener));
     }
 
 }

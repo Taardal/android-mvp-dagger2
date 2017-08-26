@@ -1,9 +1,15 @@
 package no.taardal.mvpdaggerexample.mvpmodel;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import java.util.Arrays;
+
 import javax.inject.Inject;
 
 import no.taardal.mvpdaggerexample.api.MovieApi;
-import no.taardal.mvpdaggerexample.listener.MovieListener;
+import no.taardal.mvpdaggerexample.movie.Movie;
+import no.taardal.mvpdaggerexample.mvppresenter.SearchPresenter;
 
 public class SearchMoviesModel implements SearchModel {
 
@@ -15,8 +21,22 @@ public class SearchMoviesModel implements SearchModel {
     }
 
     @Override
-    public void search(String query, MovieListener movieListener) {
-        movieApi.search(query, movieListener);
+    public void search(String query, final SearchPresenter searchPresenter) {
+        movieApi.search(query, new Response.Listener<Movie[]>() {
+
+            @Override
+            public void onResponse(Movie[] response) {
+                searchPresenter.onSearchResult(Arrays.asList(response));
+            }
+
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                searchPresenter.onError();
+            }
+
+        });
     }
 
 }

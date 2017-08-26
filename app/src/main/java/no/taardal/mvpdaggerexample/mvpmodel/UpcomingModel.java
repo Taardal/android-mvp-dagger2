@@ -1,9 +1,9 @@
 package no.taardal.mvpdaggerexample.mvpmodel;
 
-import no.taardal.mvpdaggerexample.listener.MovieListener;
+import no.taardal.mvpdaggerexample.mvppresenter.UpcomingMoviesPresenter;
 
 public interface UpcomingModel {
 
-    void getUpcomingMovies(MovieListener movieListener);
+    void getUpcomingMovies(UpcomingMoviesPresenter upcomingMoviesPresenter);
 
 }

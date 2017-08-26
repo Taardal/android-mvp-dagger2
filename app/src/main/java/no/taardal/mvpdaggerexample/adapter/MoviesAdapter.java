@@ -4,15 +4,17 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import no.taardal.mvpdaggerexample.R;
 import no.taardal.mvpdaggerexample.movie.Movie;
-import no.taardal.mvpdaggerexample.viewholder.MovieItemViewHolder;
 
-public class MoviesAdapter extends RecyclerView.Adapter<MovieItemViewHolder> {
+public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieItemViewHolder> {
 
     private List<Movie> movies;
 
@@ -32,7 +34,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieItemViewHolder> {
 
     @Override
     public void onBindViewHolder(MovieItemViewHolder movieItemViewHolder, int position) {
-        movieItemViewHolder.getMovieTitleTextView().setText(movies.get(position).getTitle());
+        movieItemViewHolder.movieTitleTextView.setText(movies.get(position).getTitle());
     }
 
     @Override
@@ -46,6 +48,18 @@ public class MoviesAdapter extends RecyclerView.Adapter<MovieItemViewHolder> {
         }
         this.movies.addAll(movies);
         notifyDataSetChanged();
+    }
+
+    class MovieItemViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.text_view_movie_item_title)
+        TextView movieTitleTextView;
+
+        MovieItemViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
     }
 
 }
